@@ -10,15 +10,16 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-    {
-        Schema::create('donor_preferences', function (Blueprint $table) {
-            $table->id('preference_id');
-            $table->foreignId('donor_id')->constrained('donors');
-            $table->enum('communication_method', ['Email', 'Phone', 'SMS'])->default('Email');
-            $table->enum('preferred_donation_type', ['Money', 'Goods', 'Services'])->default('Money');
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('goods_donations', function (Blueprint $table) {
+        $table->id('goods_id');
+        $table->foreignId('donation_id')->constrained('donations');
+        $table->string('item_name');
+        $table->integer('quantity');
+        $table->timestamps();
+    });
+}
+
     
 
     /**
